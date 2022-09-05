@@ -36,13 +36,13 @@ func (se StatusError) Status() int {
 	return se.Code
 }
 
-// Env for a handler to accept
+// Env to pass to handler
 type Env interface{}
 
 // Handler accepts environment input and includes our handler signature
 type Handler struct {
 	Env
-	Func func(e Env, w http.ResponseWriter, r *http.Request) error
+	Func func(e interface{}, w http.ResponseWriter, r *http.Request) error
 }
 
 // ServeHTTP satisfies the http.Handler
